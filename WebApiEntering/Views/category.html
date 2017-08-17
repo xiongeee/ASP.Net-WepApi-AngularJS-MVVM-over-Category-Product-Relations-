@@ -1,0 +1,45 @@
+﻿
+  
+    <div class="col-md-12" ng-cloak> <!--//bunu yapınca da sayfa ilk açıldığında kategori geliyor sonra kayboluyordu. Bu ng-cloak işte onu gizliyor.-->
+        <input type="text" ng-model="giris" />
+        <label class="label label-primary">{{giris}}</label>
+        <br />
+        <input type="button" value="Kategorileri Getir" ng-click="getir()" />
+        {{kategoriler.length}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered table-hover" ng-if="kategoriler.length>0"> <!--//angular içinde if yazmak da böyle. Eğer bir kategori seçili değilse basmasın ekrana bir şey  --> 
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kategori Adı</th>
+                                <th>Açıklama</th>
+                                <th>Düzenle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--//işte tam bu noktada ürünleri foreach ile bastırmak yerine anguların ng-repeat ı ile basmak bu şekilde olur. Oldukça kolay.-->
+                            <tr ng-repeat="(sayac,item) in kategoriler | filter:giris"> <!--//filter da arama yapar. Bu kadar basit.ng-modeli giris olan text kutumuz ile arama yapar. bu kategori ve description da arayacak, filter:giris yaparsak tüm şeylere bakar, resim içine bile bakar. Aramanın hızlı çalışması için bunu yapmamız gerekir.  -->
+                                <td>{{sayac+1}}</td>
+                                <td>{{item.categoryName}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <a href="#!kategoriguncelle/{{item.categoryID}}" class="btn btn-block btn-warning">Düzenle</a>
+                                </td>
+                                <td>
+                                    <input type="button" class="btn btn-danger"  value="Sil" ng-click="sil(item.categoryID)" />
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  
+ 

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html ng-app="northapp">
+  <!--html taglarının arası bir angular modulü tarafından kullanılacak demektir. ng demek direktif denmektedir. Bu yol linklerini verdikten sonra bir denemek için {{2+2}} yazıp logic işlemi yapıp yapmadığını görmekte fayda var. Eğer yapmıyorsa bir yerde hata vardır devam etmeyin.-->
+<head>
+    <meta charset="utf-8" />
+    <title>North App</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script> <!--//bu link ekleme sıraları önemli. Karıştırmamak lazım.--> 
+    <script src="bower_components/angular-base64-upload/src/angular-base64-upload.js"></script> <!--Install-Package AngularJS.Route indirdikten sonra gedi bu kod. Resimleri daha rahat atıp çekmeye yarayan bir eklenti-->
+   
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                            <span class="sr-only"> Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+                            <span class="icon-bar"></span>
+
+                        </button>
+                        <a class="collapse navbar-collapse" id="js-navbar-collapse" href="#!">North App</a>
+
+                    </div>
+                    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"> <a href="#!">Home</a></li>
+                            <li><a ng-href="#!kategoriekle">Kategori Ekle</a></li>
+                            <li><a href="#!falan">Contact</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row"><!--//buraya ng-view yazmak bizim @renderbody miz oldu.--> 
+            <div ng-view></div> 
+
+        </div>
+
+    </div>
+
+    <script src="Scripts/appmodule.js"></script>
+    <script src="Scripts/appcontroller.js"></script>
+</body>
+</html>
